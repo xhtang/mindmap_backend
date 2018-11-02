@@ -109,7 +109,7 @@ public class AttachmentController {
     }
 
     @PreAuthorize("hasAnyAuthority('TEACHER')")
-    @RequestMapping(value = "/api/homework/updateSA/{id}", method = RequestMethod.POST)
+    @RequestMapping(value = "/api/homework/updateSA//api/homework/updateSA/{id}", method = RequestMethod.POST)
     public @ResponseBody
     ShortAnswerQuestion updateSA(
             @RequestBody ShortAnswerQuestion saq,

@@ -36,8 +36,8 @@ public class MainConfig {
     @Bean
     public JavaMailSender javaMailSender() {
         JavaMailSenderImpl javaMailSender = new JavaMailSenderImpl();
-        javaMailSender.setProtocol("SMTP");
-        javaMailSender.setHost("smtp.126.com");
+        javaMailSender.setProtocol("smtp");
+        javaMailSender.setHost("smtp.163.com");
         javaMailSender.setPort(25);
         return javaMailSender;
     }
