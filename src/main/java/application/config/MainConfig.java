@@ -8,6 +8,8 @@ import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
+import java.util.Properties;
+
 @Configuration
 public class MainConfig {
     @Bean
@@ -39,6 +41,12 @@ public class MainConfig {
         javaMailSender.setProtocol("smtp");
         javaMailSender.setHost("smtp.163.com");
         javaMailSender.setPort(25);
+        javaMailSender.setUsername("mindmap03@163.com");
+        javaMailSender.setPassword("mindmap03");
+        Properties javaMailProperties = javaMailSender.getJavaMailProperties();
+
+        javaMailProperties.put("mail.smtp.auth", "true");
+        javaMailProperties.put("mail.smtp.starttls.enable", "true");
         return javaMailSender;
     }
 }
