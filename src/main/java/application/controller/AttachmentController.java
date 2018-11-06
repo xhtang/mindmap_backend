@@ -183,7 +183,7 @@ public class AttachmentController {
         return multipleChoiceService.getAnswersByQuestionId(Long.parseLong(questionId));
     }
 
-    @PreAuthorize("hasAnyAuthority('STUDENT')")
+    @PreAuthorize("hasAnyAuthority('TEACHER')")
     @RequestMapping(value = "/api/homework/getSAA/{questionId}", method = RequestMethod.GET)
     public @ResponseBody
     Set<StudentAnswerForShortAnswer> getSAA(

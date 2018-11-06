@@ -24,6 +24,8 @@ public interface ShortAnswerService {
 
     Set<StudentAnswerForShortAnswer> getAnswersByQuestionId(long questionId);
 
+    StudentAnswerForShortAnswer getAnswersByQuestionIdAndStudentId(long questionId, long studentId);
+
     Set<StudentAnswerForShortAnswer> getAnswersByStudentId(long studentId);
 
     void deleteShortAnswer(long id);

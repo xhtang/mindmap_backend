@@ -14,8 +14,8 @@ public interface StudentAnswerForShortAnswerRepository
         extends CrudRepository<StudentAnswerForShortAnswer, Long>{
     StudentAnswerForShortAnswer findById(long id);
 
-    @Query("MATCH (n:ShortAnswerQuestion)-[:resolve]->(q:StudentAnswerForShortAnswer) WHERE ID(n)={0}" +
-            "RETURN q")
+    @Query("MATCH (:Student)-[r:resolve]->(q:ShortAnswerQuestion) WHERE ID(q)= {0}" +
+            " RETURN r")
     Set<StudentAnswerForShortAnswer> findByQuestion_Id(long questionId);
 
     @Query("MATCH (n:Student)-[:resolve]->(q:StudentAnswerForShortAnswer) WHERE ID(n)={0}" +

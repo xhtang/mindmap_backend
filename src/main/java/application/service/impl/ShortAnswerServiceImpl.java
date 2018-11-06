@@ -91,6 +91,11 @@ public class ShortAnswerServiceImpl implements ShortAnswerService {
     }
 
     @Override
+    public StudentAnswerForShortAnswer getAnswersByQuestionIdAndStudentId(long questionId, long studentId) {
+        return answerForShortAnswerRepository.findByStudentAndQuestion(questionId, studentId);
+    }
+
+    @Override
     public Set<StudentAnswerForShortAnswer> getAnswersByStudentId(long studentId) {
         return answerForShortAnswerRepository.findByStudent_Id(studentId);
     }

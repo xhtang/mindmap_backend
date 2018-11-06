@@ -22,16 +22,6 @@ import java.util.UUID;
 public class RegistrationListener implements
         ApplicationListener<OnRegistrationCompleteEvent> {
 
-    /**
-     * Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException:
-     * Error creating bean with name 'registrationListener' defined in file [D:\advancedWeb\mind-map-pj\
-     * fdu-advancedweb-pj\build\classes\java\main\application\component\RegistrationListener.class]:
-     * Unsatisfied dependency expressed through constructor parameter 0;
-     * nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException:
-     * No qualifying bean of type 'org.springframework.mail.javamail.JavaMailSender' available:
-     * expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {}
-     */
-
     private static final Logger LOGGER = LoggerFactory.getLogger(RegistrationListener.class);
 
 //    @Autowired
