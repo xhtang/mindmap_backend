@@ -23,7 +23,7 @@ public interface ShortAnswerService {
 
     StudentAnswerForShortAnswer addStudentAnswer(long questionId, long studentId, String answer);
 
-    Map<String, String> getAnswersByQuestionId(long questionId);
+    Iterable<Map<String, Object>> getAnswersByQuestionId(long questionId);
 
     StudentAnswerForShortAnswer getAnswersByQuestionIdAndStudentId(long questionId, long studentId);
 

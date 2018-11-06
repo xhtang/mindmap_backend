@@ -88,11 +88,12 @@ public class ShortAnswerServiceImpl implements ShortAnswerService {
     }
 
     @Override
-    public Map<String, String> getAnswersByQuestionId(long questionId) {
-        return StreamSupport.stream(
-                answerForShortAnswerRepository.findAnswersToQuestion(questionId).spliterator(), false)
-                .collect(Collectors.toMap(map -> (String) map.get("name"),
-                        map -> (String) map.get("answer")));
+    public Iterable<Map<String, Object>> getAnswersByQuestionId(long questionId) {
+        return answerForShortAnswerRepository.findAnswersToQuestion(questionId);
+//        return StreamSupport.stream(
+//                answerForShortAnswerRepository.findAnswersToQuestion(questionId).spliterator(), false)
+//                .collect(Collectors.toMap(map -> (String) map.get("name"),
+//                        map -> (String) map.get("answer")));
     }
 
     @Override

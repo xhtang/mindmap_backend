@@ -175,7 +175,7 @@ public class AttachmentController {
                 CurrentUserUtil.getCurrentUser().getId(), sa.getAnswer());
     }
 
-    //@PreAuthorize("hasAnyAuthority('TEACHER')")
+    @PreAuthorize("hasAnyAuthority('TEACHER')")
     @RequestMapping(value = "/api/homework/getMCA/{questionId}", method = RequestMethod.GET)
     public @ResponseBody
     Map<String, Long> getMCA(
@@ -186,7 +186,7 @@ public class AttachmentController {
     //@PreAuthorize("hasAnyAuthority('TEACHER')")
     @RequestMapping(value = "/api/homework/getSAA/{questionId}", method = RequestMethod.GET)
     public @ResponseBody
-    Map<String, String> getSAA(
+    Iterable<Map<String, Object>> getSAA(
                     @PathVariable String questionId) { //权限添加
         return shortAnswerService.getAnswersByQuestionId(Long.parseLong(questionId));
     }
