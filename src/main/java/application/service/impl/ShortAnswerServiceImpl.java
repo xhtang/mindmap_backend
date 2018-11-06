@@ -9,7 +9,9 @@ import application.service.ShortAnswerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Set;
+import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 
 /**
  * Creator: DreamBoy
@@ -86,8 +88,11 @@ public class ShortAnswerServiceImpl implements ShortAnswerService {
     }
 
     @Override
-    public Set<StudentAnswerForShortAnswer> getAnswersByQuestionId(long questionId) {
-        return answerForShortAnswerRepository.findByQuestion_Id(questionId);
+    public Map<String, String> getAnswersByQuestionId(long questionId) {
+        return StreamSupport.stream(
+                answerForShortAnswerRepository.findAnswersToQuestion(questionId).spliterator(), false)
+                .collect(Collectors.toMap(map -> (String) map.get("name"),
+                        map -> (String) map.get("answer")));
     }
 
     @Override

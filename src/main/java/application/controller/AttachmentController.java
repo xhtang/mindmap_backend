@@ -175,7 +175,7 @@ public class AttachmentController {
                 CurrentUserUtil.getCurrentUser().getId(), sa.getAnswer());
     }
 
-    @PreAuthorize("hasAnyAuthority('TEACHER')")
+    //@PreAuthorize("hasAnyAuthority('TEACHER')")
     @RequestMapping(value = "/api/homework/getMCA/{questionId}", method = RequestMethod.GET)
     public @ResponseBody
     Map<String, Long> getMCA(
@@ -183,11 +183,11 @@ public class AttachmentController {
         return multipleChoiceService.getAnswersByQuestionId(Long.parseLong(questionId));
     }
 
-    @PreAuthorize("hasAnyAuthority('TEACHER')")
+    //@PreAuthorize("hasAnyAuthority('TEACHER')")
     @RequestMapping(value = "/api/homework/getSAA/{questionId}", method = RequestMethod.GET)
     public @ResponseBody
-    Set<StudentAnswerForShortAnswer> getSAA(
-            @PathVariable String questionId) { //权限添加
+    Map<String, String> getSAA(
+                    @PathVariable String questionId) { //权限添加
         return shortAnswerService.getAnswersByQuestionId(Long.parseLong(questionId));
     }
 

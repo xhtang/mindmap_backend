@@ -3,6 +3,7 @@ package application.service;
 import application.entity.ShortAnswerQuestion;
 import application.entity.StudentAnswerForShortAnswer;
 
+import java.util.Map;
 import java.util.Set;
 
 /**
@@ -22,7 +23,7 @@ public interface ShortAnswerService {
 
     StudentAnswerForShortAnswer addStudentAnswer(long questionId, long studentId, String answer);
 
-    Set<StudentAnswerForShortAnswer> getAnswersByQuestionId(long questionId);
+    Map<String, String> getAnswersByQuestionId(long questionId);
 
     StudentAnswerForShortAnswer getAnswersByQuestionIdAndStudentId(long questionId, long studentId);
 
