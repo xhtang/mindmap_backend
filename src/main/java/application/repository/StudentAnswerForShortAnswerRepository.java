@@ -19,8 +19,6 @@ public interface StudentAnswerForShortAnswerRepository
             "RETURN r.answer AS answer, s.name AS name")
     Iterable<Map<String, Object>> findAnswersToQuestion(long questionId);
 
-
-
     @Query("MATCH (n:Student)-[:resolve]->(q:StudentAnswerForShortAnswer) WHERE ID(n)={0}" +
             "RETURN q")
     Set<StudentAnswerForShortAnswer> findByStudent_Id(long studentId);

@@ -44,13 +44,8 @@ public class AttachmentController {
     MultipleChoiceQuestion addMC(
             @RequestBody AddMCQ mcq,
             @PathVariable String id) {
-        CurrentUser user = CurrentUserUtil.getCurrentUser();
-        Teacher teacher = (Teacher) user.getUser();
-//        long testId = userService.getTeacherByNodeId(Long.parseLong(id)).getId();
-//        if (testId == teacher.getId())
         return multipleChoiceService.addMultipleChoice(Long.parseLong(id), mcq);
-//        else
-//            return null;
+
     }
 
     @PreAuthorize("hasAnyAuthority('TEACHER')")
@@ -93,7 +88,7 @@ public class AttachmentController {
     public @ResponseBody
     MultipleChoiceQuestion updateMC(
             @RequestBody AddMCQ mcq,
-            @PathVariable String id //是否直接通过mcq获取
+            @PathVariable String id //题目的id
     ) {
         return multipleChoiceService.update(Long.parseLong(id), mcq);
     }

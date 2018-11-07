@@ -124,7 +124,7 @@ public class MultipleChoiceServiceImpl implements MultipleChoiceService {
 
         char ch = 'A';
         for (int i = 0; i < choices.size(); i++) {
-            answers.put(String.valueOf((ch + i)), choices.get(i));
+            answers.put(String.valueOf((char) (ch + i)), choices.get(i));
         }
 
         MultipleChoiceQuestion multipleChoiceQuestion = choiceRepository.findById(id);
