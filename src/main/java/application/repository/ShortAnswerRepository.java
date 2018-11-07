@@ -18,4 +18,8 @@ public interface ShortAnswerRepository extends CrudRepository<ShortAnswerQuestio
     Set<ShortAnswerQuestion> findByFatherNode_Id(long id);
 
     void deleteById(long id);
+
+    @Query("MATCH (s:Student)-[r:resolve]->(q:ShortAnswerQuestion) WHERE ID(q)={0}" +
+            "DELETE r")
+    void deleteStudentsAnswer(long id);
 }

@@ -21,4 +21,8 @@ public interface StudentAnswerForMultipleChoiceRepository
     @Query("MATCH (n:Student)-[r:resolve]->(q:MultipleChoiceQuestion) WHERE ID(n)={0}" +
             "AND ID(q) = {1} RETURN r")
     StudentAnswerForMultipleChoice findByStudentAndQuestion(long studentId, long questionId);
+
+    @Query("MATCH (s:Student)-[r:resolve]->(q:MultipleChoiceQuestion) WHERE ID(q)={0}" +
+            "DELETE r")
+    void deleteStudentsAnswer(long id);
 }

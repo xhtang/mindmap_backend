@@ -90,10 +90,16 @@ public class ShortAnswerServiceImpl implements ShortAnswerService {
     @Override
     public Iterable<Map<String, Object>> getAnswersByQuestionId(long questionId) {
         return answerForShortAnswerRepository.findAnswersToQuestion(questionId);
+
 //        return StreamSupport.stream(
 //                answerForShortAnswerRepository.findAnswersToQuestion(questionId).spliterator(), false)
-//                .collect(Collectors.toMap(map -> (String) map.get("name"),
-//                        map -> (String) map.get("answer")));
+//                .map(map -> {
+//                    Map<String, String> item =  new HashMap<>();
+//                    item.put("name", (String) map.get("name"));
+//                    item.put("answer", (String) map.get("answer"));
+//                    return item;
+//                })
+//                .collect(Collectors.toList());
     }
 
     @Override
@@ -116,7 +122,7 @@ public class ShortAnswerServiceImpl implements ShortAnswerService {
         ShortAnswerQuestion question1 = shortAnswerRepository.findById(id);
         question1.setContent(question.getContent());
         question1.setCorrectAnswer(question.getCorrectAnswer());
-        question1.setStudentAnswerForShortAnswers(null);
+        shortAnswerRepository.deleteStudentsAnswer(id);
         return shortAnswerRepository.save(question1);
     }
 

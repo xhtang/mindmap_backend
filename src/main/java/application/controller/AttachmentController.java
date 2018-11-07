@@ -85,10 +85,6 @@ public class AttachmentController {
     public @ResponseBody
     void deleteSA(
             @PathVariable String id) {
-        CurrentUser user = CurrentUserUtil.getCurrentUser();
-        Teacher teacher = (Teacher) user.getUser();
-//        long testId = userService.getTeacherByNodeId(Long.parseLong(id)).getId();
-//        if (testId == teacher.getId())
         shortAnswerService.deleteShortAnswer(Long.parseLong(id));
     }
 
@@ -99,30 +95,17 @@ public class AttachmentController {
             @RequestBody AddMCQ mcq,
             @PathVariable String id //是否直接通过mcq获取
     ) {
-        CurrentUser user = CurrentUserUtil.getCurrentUser();
-        Teacher teacher = (Teacher) user.getUser();
-//        long testId = userService.getTeacherByNodeId(Long.parseLong(id)).getId();
-//        if (testId == teacher.getId())
         return multipleChoiceService.update(Long.parseLong(id), mcq);
-//        else
-//            return null;
     }
 
     @PreAuthorize("hasAnyAuthority('TEACHER')")
-    @RequestMapping(value = "/api/homework/updateSA//api/homework/updateSA/{id}", method = RequestMethod.POST)
+    @RequestMapping(value = "/api/homework/updateSA/{id}", method = RequestMethod.POST)
     public @ResponseBody
     ShortAnswerQuestion updateSA(
             @RequestBody ShortAnswerQuestion saq,
-            @PathVariable String id //是否直接通过mcq获取
+            @PathVariable String id
     ) {
-        CurrentUser user = CurrentUserUtil.getCurrentUser();
-        Teacher teacher = (Teacher) user.getUser();
-//        long testId = userService.getTeacherByNodeId(shortAnswerService.getById(Long.parseLong(id))
-//                .getFatherNode().getId()).getId();
-//        if (testId == teacher.getId())
         return shortAnswerService.update(Long.parseLong(id), saq);
-//        else
-//            return null;
     }
 
     @RequestMapping(value = "/api/homework/getMC/{id}", method = RequestMethod.GET)
