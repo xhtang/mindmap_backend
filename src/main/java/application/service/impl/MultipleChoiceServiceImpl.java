@@ -129,7 +129,7 @@ public class MultipleChoiceServiceImpl implements MultipleChoiceService {
 
         MultipleChoiceQuestion multipleChoiceQuestion = choiceRepository.findById(id);
         multipleChoiceQuestion.setContent(mcq.getContent());
-        multipleChoiceQuestion.addCorrectAnswer(String.valueOf((ch + mcq.getCorrect())));
+        multipleChoiceQuestion.addCorrectAnswer(String.valueOf((char) (ch + mcq.getCorrect())));
         multipleChoiceQuestion.setAnswers(answers);
         answerForMultipleChoiceRepository.deleteStudentsAnswer(id);
         return choiceRepository.save(multipleChoiceQuestion);
